@@ -1,19 +1,14 @@
 package Entites;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 /**
  * 
  */
-@Embeddable
-public class Virement {
+@Entity
+public class Virement extends Operation{
 
-	@Id
-	@Column(name="ID")
-	private int id;
+
 	
 	private String benificiaire;
 	
@@ -24,19 +19,7 @@ public class Virement {
 		
 	}
 
-	/** Getter pour id
-	 * @return the id 
-	*/
-	public int getId() {
-		return id;
-	}
 
-	/** Setter pour id
-	 * @param id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	/** Getter pour benificiaire
 	 * @return the benificiaire 

@@ -7,6 +7,8 @@ import java.util.Set;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -22,6 +24,7 @@ import jakarta.persistence.TemporalType;
 public class Client {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String nom;
@@ -157,5 +160,16 @@ public class Client {
 		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance
 				+ ", adresse=" + adresse + ", banque=" + banque + ", comptes=" + comptes + "]";
 	}
+
+    /**
+     * @param numero
+     * @param rue
+     * @param codePostal
+     * @param ville
+     */
+    public void setAdresse(int numero, String rue, int codePostal, String ville) {
+        this.adresse = new Adresse();
+    }
+
 
 }

@@ -9,6 +9,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -23,8 +25,9 @@ import jakarta.persistence.TemporalType;
 
 public class Operation  {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
-	private int id;
+	protected int id;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
@@ -33,9 +36,7 @@ public class Operation  {
 	
 	private String motif;
 	
-	@Embedded
-	private Virement virement;
-	
+		
 	@ManyToOne
 	@JoinColumn(name="CPT_ID")
 	private AbstractCompte compte;
@@ -119,10 +120,6 @@ public class Operation  {
 		return "Operation [id=" + id + ", date=" + date + ", montant=" + montant + ", motif=" + motif + ", compte="
 				+ compte + "]";
 	}
-
-	/** Getter pour compte
-	 * @return the compte 
-	*/
 
 	
 

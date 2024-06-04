@@ -8,6 +8,8 @@ import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
@@ -15,6 +17,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+
 
 
 /**
@@ -26,6 +29,7 @@ import jakarta.persistence.OneToMany;
 public class AbstractCompte {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private int id;
 	
@@ -119,10 +123,14 @@ public class AbstractCompte {
 	public void setOperations(Set<Operation> operations) {
 		this.operations = operations;
 	}
-
-
-
-
-
 	
+
+    /**
+     * @param type
+     */
+
+    public void setType(String type) {
+
 }
+}
+
